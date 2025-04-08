@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {UserComponent} from './user.component';
-import { ChildComponent } from './child.component';
-import { CommentsComponent } from './comments.component';
+import {UserComponent} from '@app/user.component';
+import { ChildComponent } from '@app/child.component';
+import { CommentsComponent } from '@app/comments.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 @Component({
