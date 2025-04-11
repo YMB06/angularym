@@ -6,6 +6,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CarService } from './Services/car.service';
 import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe } from '@angular/common';
+import { ReversePipe } from './reverse.pipe';
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.css'],
@@ -132,10 +133,14 @@ import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe } from '@angular/com
     <li>Date with "date" {{ birthday | date: 'medium' }}</li>
     <li>Currency with "currency" {{ cost | currency }}</li>
 
+    Reverse Machine: {{ word }}
+    Reverse Machine: {{ word | reverse }}
 
+    
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
-    RouterLink, FormsModule, ReactiveFormsModule, LowerCasePipe, DecimalPipe, DatePipe, CurrencyPipe],
+    RouterLink, FormsModule, ReactiveFormsModule, LowerCasePipe, DecimalPipe, 
+    DatePipe, CurrencyPipe, ReversePipe],
 })
 export class AppComponent {
 isUserLogin= true;
@@ -186,5 +191,7 @@ username = 'yOunGTECh';
 num = 103.1234;
 birthday = new Date(2023, 3, 2);
 cost = 4560.34;
+
+word = 'You are a champion';
 }
 
