@@ -117,6 +117,7 @@ import { CarService } from './Services/car.service';
     <p>Email: {{ profileForm.value.email }}</p>
 
     <p> {{ carService.getCars() }} </p>
+    <p>Car Listing: {{ display }}</p>
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
     RouterLink, FormsModule, ReactiveFormsModule],
@@ -156,5 +157,10 @@ handleSubmit() {
   alert(this.profileForm.value.name + ' | ' + this.profileForm.value.email);
 }
 carService = inject(CarService);
+display = '';
 
+constructor() {
+  this.display = this.carService.getCars().join(' ⭐️ ');
 }
+}
+
