@@ -5,6 +5,7 @@ import { CommentsComponent } from '@app/comments.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CarService } from './Services/car.service';
+import { LowerCasePipe } from '@angular/common';
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.css'],
@@ -118,9 +119,11 @@ import { CarService } from './Services/car.service';
 
     <!--<p> {{ carService.getCars() }} </p>-->
     <p>Car Listing: {{ display }}</p>
+
+    {{username | lowercase }}
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
-    RouterLink, FormsModule, ReactiveFormsModule],
+    RouterLink, FormsModule, ReactiveFormsModule, LowerCasePipe],
 })
 export class AppComponent {
 isUserLogin= true;
@@ -165,5 +168,8 @@ display = '';
 constructor(private carService: CarService) {
   this.display = this.carService.getCars().join(' ⭐️ ');
 }
+
+username = 'yOunGTECh';
+
 }
 
