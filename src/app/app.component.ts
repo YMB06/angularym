@@ -116,7 +116,7 @@ import { CarService } from './Services/car.service';
     <p>Name: {{ profileForm.value.name }}</p>
     <p>Email: {{ profileForm.value.email }}</p>
 
-    <p> {{ carService.getCars() }} </p>
+    <!--<p> {{ carService.getCars() }} </p>-->
     <p>Car Listing: {{ display }}</p>
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
@@ -156,10 +156,13 @@ profileForm = new FormGroup({
 handleSubmit() {
   alert(this.profileForm.value.name + ' | ' + this.profileForm.value.email);
 }
-carService = inject(CarService);
+// carService = inject(CarService);
 display = '';
 
-constructor() {
+// constructor() {
+//   this.display = this.carService.getCars().join(' ⭐️ ');
+// }
+constructor(private carService: CarService) {
   this.display = this.carService.getCars().join(' ⭐️ ');
 }
 }
