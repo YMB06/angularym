@@ -5,7 +5,7 @@ import { CommentsComponent } from '@app/comments.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CarService } from './Services/car.service';
-import { LowerCasePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, DecimalPipe, LowerCasePipe } from '@angular/common';
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.css'],
@@ -121,9 +121,21 @@ import { LowerCasePipe } from '@angular/common';
     <p>Car Listing: {{ display }}</p>
 
     {{username | lowercase }}
+
+    <ul>
+      <li>Number with "decimal" {{ num }}</li>
+      <li>Date with "date" {{ birthday }}</li>
+      <li>Currency with "currency" {{ cost }}</li>
+    </ul>
+
+    <li>Number with "decimal" {{ num | number:"3.2-2" }}</li>
+    <li>Date with "date" {{ birthday | date: 'medium' }}</li>
+    <li>Currency with "currency" {{ cost | currency }}</li>
+
+
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
-    RouterLink, FormsModule, ReactiveFormsModule, LowerCasePipe],
+    RouterLink, FormsModule, ReactiveFormsModule, LowerCasePipe, DecimalPipe, DatePipe, CurrencyPipe],
 })
 export class AppComponent {
 isUserLogin= true;
@@ -171,5 +183,8 @@ constructor(private carService: CarService) {
 
 username = 'yOunGTECh';
 
+num = 103.1234;
+birthday = new Date(2023, 3, 2);
+cost = 4560.34;
 }
 
