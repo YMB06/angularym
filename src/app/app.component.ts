@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {UserComponent} from '@app/user.component';
 import { ChildComponent } from '@app/child.component';
 import { CommentsComponent } from '@app/comments.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { CarService } from './Services/car.service';
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.css'],
@@ -114,6 +115,8 @@ import { FormGroup, FormsModule, ReactiveFormsModule, FormControl, Validators } 
     <h2>Profile Form</h2>
     <p>Name: {{ profileForm.value.name }}</p>
     <p>Email: {{ profileForm.value.email }}</p>
+
+    <p> {{ carService.getCars() }} </p>
     `,
   imports: [UserComponent, ChildComponent, CommentsComponent, RouterOutlet, 
     RouterLink, FormsModule, ReactiveFormsModule],
@@ -152,5 +155,6 @@ profileForm = new FormGroup({
 handleSubmit() {
   alert(this.profileForm.value.name + ' | ' + this.profileForm.value.email);
 }
+carService = inject(CarService);
 
 }
